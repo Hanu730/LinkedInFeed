@@ -1,0 +1,18 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/config.2.0.schema.json",
+  "version": "2.0",
+  "bundles": {
+    "linked-in-feed-web-part": {
+      "components": [
+        {
+          "entrypoint": "./lib/webparts/linkedInFeed/LinkedInFeedWebPart.js",
+          "manifest": "./src/webparts/linkedInFeed/LinkedInFeedWebPart.manifest.json"
+        }
+      ]
+    }
+  },
+  "externals": {},
+  "localizedResources": {
+    "LinkedInFeedWebPartStrings": "lib/webparts/linkedInFeed/loc/{locale}.js"
+  }
+}

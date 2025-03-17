@@ -1,0 +1,40 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
+  "solution": {
+    "name": "linked-in-feed-client-side-solution",
+    "id": "a976abbd-3394-4152-b349-5fcbb9d29c5b",
+    "version": "1.0.0.0",
+    "includeClientSideAssets": true,
+    "skipFeatureDeployment": true,
+    "isDomainIsolated": false,
+    "developer": {
+      "name": "",
+      "websiteUrl": "",
+      "privacyUrl": "",
+      "termsOfUseUrl": "",
+      "mpnId": "Undefined-1.20.0"
+    },
+    "metadata": {
+      "shortDescription": {
+        "default": "linked-in-feed description"
+      },
+      "longDescription": {
+        "default": "linked-in-feed description"
+      },
+      "screenshotPaths": [],
+      "videoUrl": "",
+      "categories": []
+    },
+    "features": [
+      {
+        "title": "linked-in-feed Feature",
+        "description": "The feature that activates elements of the linked-in-feed solution.",
+        "id": "6afe7c93-984a-46e7-add3-165865282197",
+        "version": "1.0.0.0"
+      }
+    ]
+  },
+  "paths": {
+    "zippedPackage": "solution/linked-in-feed.sppkg"
+  }
+}
