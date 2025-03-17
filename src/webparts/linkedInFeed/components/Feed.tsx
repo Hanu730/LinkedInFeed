@@ -212,6 +212,11 @@ const LinkedInFeed: React.FC = () => {
       console.error(err);
     }
   };
+
+  const handleSeeAllClick = () => {
+    const targetPage = '/sites/Websyn-Intranet-UAT/SitePages/CompanyFeed.aspx';
+    window.location.href = targetPage;
+  };
  
   const fetchVideoUrl = async (mediaId: string) => {
     
@@ -245,48 +250,116 @@ const LinkedInFeed: React.FC = () => {
   }
 
   return (
+<Stack tokens={{ childrenGap: 10 }}>
+  {/* <h3 className={styles.h3class}>Company Feed</h3> */}
+  <div className= {styles['header-container']}>
+  <div className={styles["header-left"]} >
+    <h3 className={styles["h3class"]}>LinkedIn Posts</h3>
+  </div>
+  <button className={styles[ "see-all-btn"]} onClick={handleSeeAllClick}>See All</button>
+</div>
 
-    <Stack tokens={{ childrenGap: 10 }}>
-      <Text variant="large">LinkedIn Posts</Text>
-      {posts.length === 0 ? (
-        <Text>Loading...</Text>
-      ) : ( 
+  <div style={{ 
+    maxHeight: '500px', 
+    overflowY: 'auto', 
+    border: '1px solid #ddd', 
+    padding: '10px' 
+  }}>
+    {posts.length === 0 ? (
+      <Text>Loading...</Text>
+    ) : ( 
+      <List
+        items={posts}
+        onRenderCell={(item?: IPost) => (
+          <Stack tokens={{ childrenGap: 5 }} className={styles.postContainer}>
+            {/* Commentary */}
+            <Text>{parseCommentary(item?.commentary || '')}</Text>
+
+            {/* Render Media Button */}
+            {item?.mediaType && item?.mediaUrl && (
+              <div onClick={() => window.open(item.mediaUrl, '_blank')} style={{ cursor: 'pointer' }}>
+                {item.mediaType === 'image' ? (
+                  <img
+                    src={item.mediaUrl}
+                    alt="Post Image"
+                    className={styles.media}
+                    style={{
+                      width: '100%',
+                      height: '200px',
+                      objectFit: 'cover',
+                      borderRadius: '8px'
+                    }}
+                  />
+                ) : item.mediaType === 'video' ? (
+                  <video
+                    controls
+                    className={styles.media}
+                    style={{
+                      width: '100%',
+                      height: '200px',
+                      objectFit: 'cover',
+                      borderRadius: '8px'
+                    }}
+                  >
+                    <source src={item.mediaUrl} type="video/mp4" />
+                    Your browser does not support the video tag.
+                  </video>
+                ) : null}
+              </div>
+            )}
+
+            {/* Date */}
+            <Text variant="small">
+              {new Date(parseInt(item?.createdAt || '0')).toLocaleDateString()}
+            </Text>
+          </Stack>
+        )}
+      />
+    )}
+  </div>
+</Stack>
+
+  //   <Stack tokens={{ childrenGap: 10 }}>
+  //     <Text variant="large">LinkedIn Posts</Text>
+  //     {posts.length === 0 ? (
+  //       <Text>Loading...</Text>
+  //     ) : ( 
         
-        <List
-          items={posts}
-          onRenderCell={(item?: IPost) => (
+  //       <List
+  //         items={posts}
+  //         onRenderCell={(item?: IPost) => (
             
-            <Stack tokens={{ childrenGap: 5 }} className={styles.postContainer}>
-              <Text>{parseCommentary(item?.commentary||'')}</Text>
-                       {/* {item?.content?.media && (
-    <p><em>(Includes media: {item?.content.media.id})</em></p>
-   )} */}
-             {item?.mediaType == 'image' && item.mediaUrl && (
-          <img
-            src={item.mediaUrl}
-            alt="Post Image"
-            className={styles.media}
-            style={{ maxWidth: '100%', borderRadius: '8px' }}
-          />
-        )}
+  //           <Stack tokens={{ childrenGap: 5 }} className={styles.postContainer}>
+  //             <Text>{parseCommentary(item?.commentary||'')}</Text>
+  //                      {/* {item?.content?.media && (
+  //   <p><em>(Includes media: {item?.content.media.id})</em></p>
+  //  )} */}
+  //            {item?.mediaType == 'image' && item.mediaUrl && (
+  //         <img
+  //           src={item.mediaUrl}
+  //           alt="Post Image"
+  //           className={styles.media}
+  //           style={{ maxWidth: '100%', borderRadius: '8px' }}
+  //         />
+  //       )}
 
-        {/* Render Video */}
-        {item?.mediaType == 'video' && item.mediaUrl && (
-          <video
-            controls
-            className={styles.media}
-            style={{ maxWidth: '100%', borderRadius: '8px' }}
-          >
-            <source src={item.mediaUrl} type="video/mp4" />
-            Your browser does not support the video tag.
-          </video>
-        )}
-              <Text variant="small">{new Date(parseInt(item?.createdAt || '0')).toLocaleDateString()}</Text>
-            </Stack>
-          )}
-        />
-      )}
-    </Stack>
+  //       {/* Render Video */}
+  //       {item?.mediaType == 'video' && item.mediaUrl && (
+  //         <video
+  //           controls
+  //           className={styles.media}
+  //           style={{ maxWidth: '100%', borderRadius: '8px' }}
+  //         >
+  //           <source src={item.mediaUrl} type="video/mp4" />
+  //           Your browser does not support the video tag.
+  //         </video>
+  //       )}
+  //             <Text variant="small">{new Date(parseInt(item?.createdAt || '0')).toLocaleDateString()}</Text>
+  //           </Stack>
+  //         )}
+  //       />
+  //     )}
+  //   </Stack>
     // <div className={styles.linkedInFeed}>
     //   <h2>LinkedIn Feed</h2>
     //   {posts.length === 0 ? (

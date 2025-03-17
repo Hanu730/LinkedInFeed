@@ -181,3 +181,90 @@
   border-radius: 8px;
   object-fit: cover;
 }
+
+.postContainer {
+  padding: 10px;
+  border-bottom: 1px solid #eee;
+}
+
+.media {
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #ccc;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background-color: #f1f1f1;
+}
+
+.h3class{
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  position: relative;
+}
+.h3class:after {
+  border-bottom: 3px solid #f26724;
+  bottom: -3px;
+  content: "";
+  height: 10px;
+  left: 0;
+  position: absolute;
+  width: 28px;
+}
+
+.header-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.h3class {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 20px;
+  margin-top: 0;
+  padding-bottom: 5px;
+  position: relative;
+}
+
+.h3class:after {
+  border-bottom: 3px solid #f26724;
+  bottom: -3px;
+  content: "";
+  height: 10px;
+  left: 0;
+  position: absolute;
+  width: 28px;
+}
+
+.see-all-btn {
+  background-color: #f26724; /* Blue button background */
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+// .see-all-btn:hover {
+//   background-color: #b4aba708; /* Darker blue on hover */
+// }
+.header-left {
+  display: flex;
+  flex-direction: column;
+}
